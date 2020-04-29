@@ -1,0 +1,27 @@
+<ng-container>
+  <ion-list style="text-align:center" style="background-color: #dbdbdb
+  ">
+    <ion-button expand="block" color="success" (click)="DisplayData()">
+      <p>Birds</p>
+  </ion-button>
+  </ion-list>
+  </ng-container>
+
+  
+<ion-content color="secondary">
+  <ion-list style="background-color: #dbdbdb">
+    <ion-col  >
+      <div color="success">
+        {{ "Nombre de passage total: "+ this.lstBirdsdata[0].passages.data}}
+      </div>
+      <div color="success">
+        {{ "Oiseaux Present ce mois: " + this.birdsInHouse}}
+      </div>
+    </ion-col>
+  </ion-list>
+</ion-content>
+
+
+<ion-content col-6 color="secondary">
+  <div id="img"> <img src="assets/imgs/bird.png"/></div>
+</ion-content>
