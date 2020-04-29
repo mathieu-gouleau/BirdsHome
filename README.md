@@ -1,4 +1,4 @@
-# BirdsHome
+# Make a Birds Home Connected via Flask Server, an IONIC APP and Arduino setup
 Birds home project 
 
 This project is a Bird's home connected in local server. I use a python flask server to get the data, an ionic app to display the data on a phone and an arduino setup which send data to the python server. In order to run the project you will need differents things, that i will explain in each part. 
