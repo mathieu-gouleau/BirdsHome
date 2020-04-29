@@ -21,7 +21,7 @@ export class DataService {
 
 
   getDatafromBirdHouse():Observable<any>{
-    return this.httpclient.get("http://192.168.1.24:5000/get",httpOptions)
+    return this.httpclient.get("PUT YOUR IP ADRESS":5000/get",httpOptions)
   }
 
 }
