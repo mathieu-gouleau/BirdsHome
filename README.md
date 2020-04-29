@@ -53,6 +53,13 @@ Then if you want to install on an android device you gonna need to change severa
 ==>  in the function "getDatafromBirdHouse()' write  yout ip adress where i wrote "PUT YOUT IP ADRESS". 
 ex: " return this.httpclient.get("http://192.167.6.64:5000/get",httpOptions) "
 
+
+
+3)plug your phone one your computer, you will have to enable the debug mode or developer mode on your device, follow this video it's well explained: https://www.youtube.com/watch?v=Jf4RydXv7X8
+
+3) Open a cmd in the "client" folder and run this command
+- ionic build android
+
 2)GO to the "Client" folder, then in the "resources" folder, then in the "android" folder, then in the "xml" folder and open the file "network_security_config.xml" with your editor. Path: "Client\resources\android\xml".
 ==> add this line "<domain>PUT YOUT IP ADRESS</domain>" line just bellow thsi line :
 "<domain includeSubdomains="true">localhost</domain>", and don't forget to change the text "PUT YOUT IP ADRESS" still by your own ip adress. 
@@ -61,11 +68,11 @@ ex:" <domain-config cleartextTrafficPermitted="true">
         <domain>192.167.6.64</domain>
     </domain-config> "
 
-
-3)plug your phone one your computer, you will have to enable the debug mode or developer mode on your device, follow this video it's well explained: https://www.youtube.com/watch?v=Jf4RydXv7X8
-
-3) Open a cmd in the "client" folder and run this command
+4) Re Open a cmd in the "client" folder and re-run this command
 - ionic build android
+
+5) follow the path in the cmd "Client\platforms\android\app\build\outputs\apk\debug"
+==> copy the file "app-debug.apk" on your device and then run this file on your device
 
 Voila you can see the data on your phone now ( if the arduino is set up of course) ! Don't forget to connect your phone and yout computer to the same network of course ! 
 
