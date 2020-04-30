@@ -124,7 +124,7 @@ http.begin("http://192.166.25.3:5000/post");
 
 3) Try to DEPLOY the code into your ESP32, you could have problem with the usb cable and with the reset button ===>
 - try different usb cable, i think old usb cables are not adapted( i tryed 6 differents usb cable until i found the good one)
-- when you got the message " connection___' push the button reset 5sec and then it will deploy on your card
+- when you got the message " connecting.......___' push the button reset 5sec and then it will deploy on your card
 
 
 
