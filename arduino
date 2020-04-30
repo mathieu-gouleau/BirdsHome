@@ -1,0 +1,98 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
+
+
+int pin =33;
+
+RTC_DATA_ATTR int bootCount = 0;
+
+const char* ssid = "PUT YOUR WIFI ID";
+const char* password =  "PUT YOUR WIFI MDP";
+unsigned long previousMillis = 0;
+const long interval = 100000000;
+
+void setup() {
+  unsigned long currentMillis = millis();
+ 
+ 
+ 
+  pinMode(pin,INPUT);
+
+  esp_sleep_enable_ext0_wakeup(GPIO_NUM_33,1);
+ 
+  delay(2000);
+ 
+  Serial.println("This will never be printed");
+
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+  }
+
+  Serial.println("Connected to the WiFi network");
+
+  if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
+  HTTPClient http;  
+  http.begin("http://"PUT YOUR IP ADRESS":5000/post");
+  http.addHeader("Content-Type", "application/json");    
+  StaticJsonDocument<200> doc;
+
+ 
+  doc["sensor"] = "Detection";
+  doc["time"]=1351824120;
+
+  JsonArray data = doc.createNestedArray("data");
+ 
+    data.add(bootCount);
+    ++bootCount;
+    Serial.println("sent value");
+    Serial.println("Boot number"+ String(bootCount));
+   
+   if (currentMillis - previousMillis >= interval){
+    previousMillis = currentMillis;
+  }else{
+    bootCount = 0;
+  }
+ 
+
+  String requestBody;
+  serializeJson(doc,requestBody);
+
+  int httpResponseCode = http.POST(requestBody);   //Send the actual POST request
+   
+
+   if(httpResponseCode>0){
+
+    Serial.println(httpResponseCode);
+
+   
+   
+   }else{
+
+    Serial.println("Error on sending POST");
+
+   }
+
+   http.end();
+    //Free resources
+
+ }else{
+
+    Serial.println("Error in WiFi connection");
+
+ }
+
+  delay(1500);  //Send a request every 2 seconds
+  esp_deep_sleep_start();
+  Serial.println("Going to sleep now");
+ 
+ 
+
+
+}
+
+void loop(){}
