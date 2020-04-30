@@ -18,13 +18,13 @@ The flask server is in the folder "server", if you want to use it and run it  FO
 - ipconfig 
 ==> write your Ipv4 Address or copy it ( it's something like "192.168.x.y") 
 
-4) open the folder where the "server" folder is and open a cmd in this folder, write theses commands to run the server:
+4) download the "server" folder on your machine from github, open a cmd in this folder, write theses commands to run the server:
 - Set FLASK_APP= BirdHouse_server.py
 - flask run -h "IP Adress"
 
 you need to paste your Ipv4 Adress that you copied just before 
 
-What the serveur can do ? 
+What the server can do ? 
 
 
 Get method: 
@@ -35,7 +35,9 @@ get the data from the server, in this example it's a int variable that increment
 Post method: 
 returns: INT variable
 "http://"your IP Adress":5000/post"
-post the data from arduino
+post the data from arduino, there a list where we append elements each time the PIR sensor detect mouvement.
+In this element we got a date and a value.
+
 
 
 ###IONIC CLIENT### 
@@ -49,7 +51,7 @@ The IONIC app is in the folder "Client", it's a simple app in order to see on yo
 
 Then if you want to install on an android device you gonna need to change severals things it's very important if you want it to work :
 
-1)GO to the "Client" folder, then in the "src" folder", then in the "app" folder, then in the "service" folder and then open with your editor the "data.service.ts" file. Path: "Client\src\app\service"
+1)download the "server" folder on your machine from github, GO to the "Client" folder, then in the "src" folder", then in the "app" folder, then in the "service" folder and then open with your editor the "data.service.ts" file. Path: "Client\src\app\service"
 ==>  in the function "getDatafromBirdHouse()' write  yout ip adress where i wrote "PUT YOUT IP ADRESS". 
 ex: " return this.httpclient.get("http://192.167.6.64:5000/get",httpOptions) "
 
