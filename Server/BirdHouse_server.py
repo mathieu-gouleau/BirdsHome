@@ -16,14 +16,15 @@ CORS(app)
 #     app.run(host= '0.0.0.0')
 #     return render_template('index1.html')
 
-
+feeds = []
 
 @app.route('/post', methods = ["POST"])
 def post():
-    data = request.get_json()
-    print(data['data'])
-    with open('crossing.json','w') as f: 
-        json.dump(data['data'],f)
+    entry = {'date':str(today),'data':data['data']}
+    feeds.append(entry)
+    print("taille list")
+    print(len(feeds))
+    json.dump(feeds,f)
     return ''
 
 @app.route('/get', methods = ["GET"])
@@ -36,7 +37,9 @@ def getdata():
 def getValueFromESP():
     with open('crossing.json','r') as json_file:
         dataBirds = json.load(json_file)
-        Birdpassed = dataBirds[0]
+        print("taille list")
+        print(len(feeds))
+        Birdpassed = dataBirds[len(feeds)-1]["data"]
     return Birdpassed
 
 
