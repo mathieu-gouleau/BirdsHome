@@ -79,8 +79,54 @@ Voila you can see the data on your phone now ( if the arduino is set up of cours
 
 ###ARDUINO SETUP###
 
+The idea of the project is to have a sensor which gonna detect if birds came into the bird house. We need to have to have an energy independent modul, that we will never touch again until 1 years. The setup is located outside, we also need to make something waterproof. 
+
+###EQUIPMENT##
+To make the setup you can follow this TUTO, it's well detailled and well explained. ==> https://randomnerdtutorials.com/power-esp32-esp8266-solar-panels-battery-level-monitoring/
 
 
+This tuto is only for the energy part, for our project we globaly need:
+- ESP32 ==>
+https://www.amazon.fr/AZ-Delivery-NodeMCU-d%C3%A9veloppement-d%C3%A9nergie-successeur/dp/B071P98VTG/ref=sxts_sxwds-bia-wc-p13n1_0?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&cv_ct_cx=esp32&dchild=1&keywords=esp32&pd_rd_i=B071P98VTG&pd_rd_r=153390f1-9788-42c5-9e34-84cc4c6ccd4e&pd_rd_w=cXAUZ&pd_rd_wg=OCVqG&pf_rd_p=b7b6f9d7-ff29-487f-946f-367a6949f052&pf_rd_r=2YBFMJ11N9C55DP8C2KN&psc=1&qid=1588274358&sr=1-1-c8b680f7-0dc9-4abe-aa5a-ccfde0ac07ae
+
+- PIR movement detector module (HC-SR501) ==>
+https://www.amazon.fr/AZDelivery-sr04-Capteur-ultrasons-T%C3%A9l%C3%A9m%C3%A8tre-Raspberry/dp/B07CNBYRQ7/ref=sr_1_2_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=HC-SR501&qid=1588274264&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyQkcxM1M5UVBLNjAmZW5jcnlwdGVkSWQ9QTAzNzcyOTEyREJUMlZGQkxJOVFBJmVuY3J5cHRlZEFkSWQ9QTA4NDU1NjcxTDhTUEw2T0RMM1pEJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==
+
+
+Then connect your PIR sensor with the esp323 card ==>
+
+-plug the GND pin to the GND pin of the esp32
+-plug the 5v pin to the 5v piof th esp32
+-plug the data pin(the middle one) to the GPIO33pin of the esp32 
+
+
+###ESP32 CODE###
+
+To use esp32 you need to follow this procedure: 
+
+1) download arduino IDE and install it on your machine ==> https://www.arduino.cc/en/main/software
+
+2) Install the dependencies for esp32 
+follow this link it's well explained ==>https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+
+3)download my code on your machine, it's the "arduino" file.
+
+4)Where there is "PUT YOUR WIFI ID" , "PUT YOUR WIFI MDP" , "PUT YOUR IP ADRESS" , write your own data(IP ADRESS is the IP Adress of where you run your python server) 
+
+ex:
+const char* ssid = "sfrtavez";
+
+const char* password =  "carotte2020";
+
+http.begin("http://192.166.25.3:5000/post");
+
+3) Try to DEPLOY the code into your ESP32, you could have problem with the usb cable and with the reset button ===>
+- try different usb cable, i think old usb cables are not adapted( i tryed 6 differents usb cable until i found the good one)
+- when you got the message " connection___' push the button reset 5sec and then it will deploy on your card
+
+
+
+4) Voila your ESP32 his sending to your python server data each time someone pass in front of the PIR sensor.
 
 
 
