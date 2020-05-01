@@ -9,6 +9,8 @@ import math
 import numpy.ma as ma
 
 
+feeds = []
+
 app = Flask(__name__)
 CORS(app)
 # @app.route('/')
