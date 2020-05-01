@@ -7,9 +7,8 @@ import os
 import json
 import math
 import numpy.ma as ma
+from datetime import date
 
-
-feeds = []
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +16,10 @@ CORS(app)
 # def hello():
 #     app.run(host= '0.0.0.0')
 #     return render_template('index1.html')
+
+
+feeds = []
+today = date.today()
 
 @app.route('/post', methods = ["POST"])
 def post():
@@ -40,7 +43,7 @@ def getdata():
 
 def getValueFromESP():
     with open('crossing.json','r') as json_file:
-        
+    
         dataBirds = json.load(json_file)
         print("taille list")
         print(len(feeds))
@@ -50,5 +53,7 @@ def getValueFromESP():
 
 
 app.run(host='0.0.0.0', port= 5000)
+
+
 
 
