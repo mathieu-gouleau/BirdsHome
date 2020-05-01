@@ -9,11 +9,14 @@ RTC_DATA_ATTR int bootCount = 0;
 
 const char* ssid = "PUT YOUR WIFI ID";
 const char* password =  "PUT YOUR WIFI MDP";
-unsigned long previousMillis = 0;
-const long interval = 100000000;
+hw_timer_t * timer =NULL;
 
 void setup() {
-  unsigned long currentMillis = millis();
+  timer = timerBegin(0,80,true);
+  timerAttachInterrupt(timer,&onTimer,true);
+  timerAlarmWrite(timer,10000000000000000000000000000000000000,true);
+  timerAlarmEnable(timer);
+  
  
  
  
@@ -41,9 +44,6 @@ void setup() {
   http.addHeader("Content-Type", "application/json");    
   StaticJsonDocument<200> doc;
 
- 
-  doc["sensor"] = "Detection";
-  doc["time"]=1351824120;
 
   JsonArray data = doc.createNestedArray("data");
  
@@ -51,12 +51,7 @@ void setup() {
     ++bootCount;
     Serial.println("sent value");
     Serial.println("Boot number"+ String(bootCount));
-   
-   if (currentMillis - previousMillis >= interval){
-    previousMillis = currentMillis;
-  }else{
-    bootCount = 0;
-  }
+  
  
 
   String requestBody;
