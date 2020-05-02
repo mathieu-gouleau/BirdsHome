@@ -49,6 +49,24 @@ The IONIC app is in the folder "Client", it's a simple app in order to see on yo
 - npm install -g @ionic/cli native-run cordova-res
 - npm i -g native-run@latest
 
+3)Download gradle binary from the link  https://gradle.org/install/
+
+Extract the zip file to 'C:\Gradle' or somewhere else
+
+open Edit Environment variable dialog from start menu > Search
+
+Click 'New' under system variables and add as below
+
+Variable Name GRADLE_HOME Variable Value C:\Gradle\gradle-4.0.1
+
+Then choose PATH variable from system variable list
+
+append the gradle path to variable value like this C:\Gradle\gradle-4.0.1\bin
+
+then press win Key+R type cmd then enter > in command terminal type gradle -v
+
+if the setup is correct you will see the gradle installation details
+
 Then if you want to install on an android device you gonna need to change severals things it's very important if you want it to work :
 
 1)download the "server" folder on your machine from github, GO to the "Client" folder, then in the "src" folder", then in the "app" folder, then in the "service" folder and then open with your editor the "data.service.ts" file. Path: "Client\src\app\service"
