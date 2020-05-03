@@ -49,6 +49,15 @@ The IONIC app is in the folder "Client", it's a simple app in order to see on yo
 - npm install -g @ionic/cli native-run cordova-res
 - npm i -g native-run@latest
 
+3)Download Java SE dev from the link  https://www.oracle.com/java/technologies/javase-jdk8-downloads.html
+==> follow the installation recommendation
+
+
+4) Download Android studio from the link https://developer.android.com/studio
+follow the installation recommendation and when it's installed
+- open preferences or Settings, select Android SDK, install ANDROID API 28 
+ 
+
 3)Download gradle binary from the link  https://gradle.org/install/
 
 Extract the zip file to 'C:\Gradle' or somewhere else
